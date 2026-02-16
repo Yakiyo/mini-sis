@@ -2,13 +2,13 @@
 
 #include <string>
 
-class User {
+class Person {
    protected:
     int id;
     std::string name;
 
     public:
-    User(int id, const std::string& name);
+    Person(int id, const std::string& name);
 
     int getId() const;
     std::string getName() const;
