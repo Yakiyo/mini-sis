@@ -2,4 +2,7 @@
 
 using namespace std;
 
-class Instructor {};
+class Instructor : public person {
+    protect
+    
+};
