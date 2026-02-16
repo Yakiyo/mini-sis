@@ -2,16 +2,20 @@
 
 #include <string>
 
+using namespace std;
+
 class Person {
    protected:
     int id;
-    std::string name;
+    string name;
 
     public:
-    Person(int id, const std::string& name);
+    Person(int id, const string& name);
 
+    void setId(int id);
+    void setName(const string& name);
     int getId() const;
-    std::string getName() const;
+    string getName() const;
 
-    virtual std::string type() const;
+    virtual string type() const;
 };
