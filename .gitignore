@@ -39,3 +39,10 @@
 
 # debug information files
 *.dwo
+
+
+# sql db
+*.db
+
+# test folder
+/test/

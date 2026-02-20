@@ -1,4 +1,4 @@
-files := main.cpp db/db.cpp db/student.cpp sqlite/sqlite3.o
+files := main.cpp sqlite/sqlite3.o src/db.cpp
 
 build: $(files)
 	g++ -o main $(files) -Isqlite
