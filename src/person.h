@@ -5,17 +5,20 @@
 using namespace std;
 
 class Person {
-   protected:
-    int id;
-    string name;
+    private:
+        int id;
+
+    protected:
+        string name;
 
     public:
-    Person(int id, const string& name);
+        Person(int id, const string name);
 
-    void setId(int id);
-    void setName(const string& name);
-    int getId() const;
-    string getName() const;
+        void setId(int id);
+        void setName(const string name);
+        int getId() const;
+        string getName() const;
 
-    virtual string type() const;
+        virtual string type() const = 0;
+        virtual ~Person() = default;
 };
