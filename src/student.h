@@ -1,9 +1,10 @@
 #pragma once
 #include "person.h"
+#include "serde.h"
 
 using namespace std;
 
-class Student : public Person {
+class Student : public Person, public Serialize, public Deserialize<Student> {
     protected:
     int id;
     string dept;
@@ -15,5 +16,7 @@ class Student : public Person {
     string getDept() const;
 
     string type() const;
+    string serialize() const;
+    static Student deserialize(const string& str);
 
 };

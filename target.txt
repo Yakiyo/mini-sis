@@ -1,0 +1,13 @@
+- static members
+- const functions
+- constructors
+- destructors
+- operator overloading
+- inheritance
+- pointers and reference (new & delete)
+- virtual function
+- this
+- stream
+- files
+- template 
+- exception

@@ -1,55 +1,50 @@
 #include "db.h"
 
-#include <sqlite3.h>
-#include <iostream>
 #include <fstream>
-#include <string>
+#include <sstream>
 
-using namespace std;
-
-class DB {
-   private:
-    static const string _file;
-    static bool initialized;
-    static DB instance;
-    sqlite3* db;
-
-   public:
-    DB();
-    static DB& getInstance();
-    void open();
-    void close();
-};
-
-DB::DB() {
-    // empty constructor
+template <typename T>
+DBRepo<T>::DBRepo(const string& filename) {
+    this->filename = filename;
+    this->data = {};
 }
 
-DB& DB::getInstance() {
-    if (!initialized) {
-        instance = DB();
-        initialized = true;
+template <typename T>
+vector<T> DBRepo<T>::load() {
+    this->data.clear();
+
+    ifstream file(this->filename);
+    if (!file.is_open()) {
+        // TODO: file error
+        throw runtime_error("Could not open file: " + this->filename);
     }
-    return instance;
-}
-
-void DB::open() {
-    int exit = 0;
-    exit = sqlite3_open(_file.c_str(), &db);
-
-    if (exit) {
-        cerr << "Error open DB " << sqlite3_errmsg(db) << std::endl;
-        return;
+    string line;
+    while (getline(file, line)) {
+        if (!line.empty()) {
+            T item = T::deserialize(line);
+            this->data.push_back(item);
+        }
     }
-
-    cout << "Opened Database Successfully!" << std::endl;
 }
 
-void DB::close() {
-    sqlite3_close(db);
-    cout << "Closed Database Successfully!" << std::endl;
+template <typename T>
+void DBRepo<T>::save() {
+    ofstream file(this->filename);
+    if (!file.is_open()) {
+        // TODO: file error
+        throw runtime_error("Could not open file: " + this->filename);
+    }
+    for (const T& item : this->data) {
+        file << item.serialize() << endl;
+    }
 }
 
+template <typename T>
+vector<T> DBRepo<T>::getData() const {
+    return this->data;
+}
 
-const string DB::_file = "sis.db";
-bool DB::initialized = false;
+template <typename T>
+void DBRepo<T>::addData(const T& item) {
+    this->data.push_back(item);
+}
