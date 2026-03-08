@@ -1,12 +1,17 @@
-#include "person.h"
-#include<string>
+#include <string>
 
-class Employee: Person {
-    private:
-        Designation designation;
-public:
-    Employee(const int id, const string &name, Designation designation);
-    string type() const override;
+#include "person.h"
+#include "serde.h"
+
+class Employee : public Person, public Serialize, public Deserialize<Employee> {
+   private:
+    Designation designation;
+
+   public:
+    Employee(const int id, const string& name, Designation designation);
+    virtual string type() const = 0;
+    virtual string serialize() const = 0;
+    static Employee deserialize(const string& str);
 };
 
 enum class Designation {
@@ -14,3 +19,5 @@ enum class Designation {
     Admin,
     Staff
 };
+
+string designationStr(Designation desig);

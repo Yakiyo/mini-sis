@@ -1,29 +1,31 @@
-#include <string>
 #include "student.h"
-#include "util.h"
+
+#include <string>
+
 #include "error.h"
+#include "util.h"
 
 using namespace std;
 
-Student :: Student(int id, const string &name, const string &dept) : Person(id, name), dept(dept){}
+Student ::Student(int id, const string& name, const string& dept) : Person(id, name), dept(dept) {}
 
-string Student :: getDept() const {
+string Student ::getDept() const {
     return this->dept;
 }
 
-void Student :: setDept(const string &dept) {
+void Student ::setDept(const string& dept) {
     this->dept = dept;
 }
 
-string Student :: type() const {
+string Student ::type() const {
     return "Student";
 }
 
-string Student :: serialize() const {
+string Student ::serialize() const {
     return to_string(this->getId()) + "|" + this->getName() + "|" + this->getDept();
 }
 
-Student Student :: deserialize(const string &str) {
+Student Student ::deserialize(const string& str) {
     vector<string> parts = strsplit(str, '|');
     if (parts.size() != 3) {
         throw DeserializeErr("Student", "Invalid serialized Student: " + str);
