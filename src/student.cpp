@@ -1,5 +1,4 @@
 #include "student.h"
-
 #include <string>
 
 #include "error.h"
@@ -7,7 +6,7 @@
 
 using namespace std;
 
-Student ::Student(int id, const string& name, const string& dept) : Person(id, name), dept(dept) {}
+Student ::Student(int id, const string& name, const string& dept, Wallet w) : Person(id, name), dept(dept), wallet(w) {}
 
 string Student ::getDept() const {
     return this->dept;
@@ -15,6 +14,14 @@ string Student ::getDept() const {
 
 void Student ::setDept(const string& dept) {
     this->dept = dept;
+}
+
+void Student :: setWallet(Wallet& w){
+    this->wallet = w;
+}
+
+Wallet Student :: getWallet() const{
+    return wallet;
 }
 
 string Student ::type() const {
@@ -33,5 +40,5 @@ Student Student ::deserialize(const string& str) {
     int id = stoi(parts[0]);
     string name = parts[1];
     string dept = parts[2];
-    return Student(id, name, dept);
+    return Student(id, name, dept, Wallet());
 }

@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<exception>
 
 using namespace std;
 
@@ -22,4 +22,15 @@ class FileErr: public exception {
     const char* what() const noexcept override {
         return ("File error for " + filename + ": " + message).c_str();
     }
+};
+
+class TransactionErr: public exception {
+    private:
+        string message;
+    public:
+        TransactionErr(const string& message) : message(message){}
+
+        const char* what() const noexcept override{
+            return ("Transaction error: " + message).c_str();
+        }
 };
