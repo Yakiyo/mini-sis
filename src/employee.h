@@ -9,6 +9,8 @@ class Employee : public Person, public Serialize, public Deserialize<Employee> {
 
    public:
     Employee(const int id, const string& name, Designation designation);
+    virtual Designation getdesignation() const;
+    virtual void setdesignation(Designation designation);
     virtual string type() const = 0;
     virtual string serialize() const = 0;
     static Employee deserialize(const string& str);
@@ -21,3 +23,4 @@ enum class Designation {
 };
 
 string designationStr(Designation desig);
+Designation StrtoDesignation(const string& str);

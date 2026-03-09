@@ -10,11 +10,20 @@ class Student : public Person, public Serialize, public Deserialize<Student> {
     int id;
     string dept;
     string name;
+    string AcademicYear;
+    int Semester;
+
     private:
     Wallet wallet;
     public:
-    Student(int id, const string& name, const string& dept, Wallet);
+    Student(int id, const string& name, const string& dept, Wallet w);
     
+    void setAcademicYear(const string& year);
+    string getAcademicYear() const;
+   
+    void setSemester(int semester);
+    int getSemester() const;
+
     void setDept(const string& dept);
     string getDept() const;
 

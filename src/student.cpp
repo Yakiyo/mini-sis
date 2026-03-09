@@ -11,6 +11,18 @@ Student ::Student(int id, const string& name, const string& dept, Wallet w) : Pe
 string Student ::getDept() const {
     return this->dept;
 }
+void Student ::setAcademicYear(const string& year) {
+    this->AcademicYear = year;
+}
+void Student ::setSemester(int semester) {
+    this->Semester = semester;
+}
+string Student ::getAcademicYear() const {
+    return this->AcademicYear;
+}
+int Student ::getSemester() const {
+    return this->Semester;
+}
 
 void Student ::setDept(const string& dept) {
     this->dept = dept;
