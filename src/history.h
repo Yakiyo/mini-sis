@@ -1,13 +1,12 @@
 #pragma once
-#include<student.h>
 #include<iostream>
 #include<string>
-#include<display.h>
+// #include<wallet.h>
+#include<student.h>
+#include<dashboard.h>
 using namespace std;
 
-class Dashboard : public Display{
+class History : public Display{
     public:
         void display() const override;
-
-        // void displayWallet() const;
 };

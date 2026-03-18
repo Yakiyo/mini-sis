@@ -4,13 +4,14 @@
 #include<string>
 #include<error.h>
 #include<serde.h>
+#include<display.h>
 using namespace std;
 
-void Dashboard ::setStudent(const Student& stud){
-   this->stud = stud; 
-}
+// void Dashboard ::setStudent(const Student& stud){
+//    this->stud = stud; 
+// }
 
-void Dashboard ::displayStudent() const{
+void Dashboard ::display() const{
    cout << "==================================================================" << endl;
    cout << setw(40);
    cout << right << "STUDENT DASHBOARD" << endl;
