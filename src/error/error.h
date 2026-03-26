@@ -1,0 +1,22 @@
+#pragma once
+#include <string>
+#include <stdexcept>
+
+
+using namespace std;
+
+class DsrlzExcept: public exception {
+    private:
+    // the class failed to be deserialized
+    string cls;
+    // the line that caused the error
+    string content;
+
+    public:
+    DsrlzExcept(const string& className, const string& line) : cls(className), content(line) {}
+
+    const char* what() const noexcept override {
+        // convert `string` to `const char*` by using `c_str()`
+        return ("Failed to deserialize " + cls + ": " + content).c_str();
+    }
+};
