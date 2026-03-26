@@ -2,6 +2,8 @@
 #include <string>
 #include <sstream>
 
+#include "serde.h"
+
 using namespace std;
 
 vector<string> strsplit(const string& str, char delimiter) {
@@ -14,4 +16,10 @@ vector<string> strsplit(const string& str, char delimiter) {
     }
 
     return result;
+}
+
+// default implementation of deserialize, which throws an error if not overridden by the derived class
+template <typename T>
+T Serde<T>::deserialize(const string& data) {
+    throw runtime_error("Deserialize method not implemented for this type");
 }

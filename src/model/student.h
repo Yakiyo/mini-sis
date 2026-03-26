@@ -9,7 +9,7 @@
 using namespace std;
 
 // The student class, inheriting from User and implementing serialization and deserialization
-class Student : public User, public Srlz, public Dsrlz<Student> {
+class Student : public User, public Serde<Student> {
     private:
     string dept;
     int batch;

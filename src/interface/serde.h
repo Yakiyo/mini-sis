@@ -5,24 +5,15 @@
 
 using namespace std;
 
-// Interface for serialization
+// Serialization and Deserialization interface
 //
-// This is a pure abstract class. Inheriting classes must implement the serialize() method, which returns a string representation of the object.
-class Srlz {
+// Classes that inherit from Serde must implement the serialize() method to convert an object to a string.
+// They can also implement the static deserialize() method to create an object from a string.
+template <typename T>
+class Serde {
    public:
     virtual string serialize() const = 0;
-};
-
-// Interface for deserialization
-//
-// This is a template class. Inheriting classes must implement the static deserialize() method, 
-// which takes a string representation of the object and returns an instance of the class.
-template <typename T>
-class Dsrlz {
-   public:
-    static virtual T deserialize(const string& data) {
-        throw runtime_error("Deserialization not implemented");
-    }
+    static virtual T deserialize(const string& data);
 };
 
 // Utility function to split a string by a delimiter
