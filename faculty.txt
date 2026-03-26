@@ -1,0 +1,5 @@
+Faculty,Robert Brown,301,Lecturer
+Faculty,Emily White,302,Assistant Professor
+Faculty,William Garrick,303,Professor
+Faculty,Linda Hamilton,304,Associate Professor
+Faculty,Arthur Dent,305,Dean

@@ -1,0 +1,10 @@
+Student,Alice Johnson,101,CSE,21
+Student,Bob Smith,102,EEE,22
+Student,Charlie Davis,103,ME,23
+Student,Diana Prince,104,IPE,24
+Student,Ethan Hunt,105,CSE,21
+Student,Fiona Gallagher,106,ME,22
+Student,George Miller,107,EEE,23
+Student,Hannah Abbott,108,IPE,24
+Student,Ian Wright,109,CSE,21
+Student,Julia Roberts,110,ME,22
