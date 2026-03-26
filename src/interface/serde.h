@@ -13,7 +13,7 @@ template <typename T>
 class Serde {
    public:
     virtual string serialize() const = 0;
-    static virtual T deserialize(const string& data);
+    static T deserialize(const string& data);
 };
 
 // Utility function to split a string by a delimiter

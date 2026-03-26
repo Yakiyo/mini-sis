@@ -12,7 +12,11 @@ Team - Syntax Terrors
 Required toolchain - g++
 
 Procedures:
-**TBA**
+```
+cmake -G "MinGW Makefiles" -B build
+
+cmake --build build
+```
 
 ## Code Architecture:
 
