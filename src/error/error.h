@@ -20,3 +20,15 @@ class DsrlzExcept: public exception {
         return ("Failed to deserialize " + cls + ": " + content).c_str();
     }
 };
+
+class FileExcept: public exception {
+    private:
+    string filename;
+
+    public:
+    FileExcept(const string& filename) : filename(filename) {}
+
+    const char* what() const noexcept override {
+        return ("Failed to open file: " + filename).c_str();
+    }
+};
