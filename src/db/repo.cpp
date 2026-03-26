@@ -7,7 +7,7 @@
 using namespace std;
 
 template <typename T>
-Repo<T>::Repo(const string& filename) : filename(filename) {
+Repo<T>::Repo(const string& filename) : filename(filename), data(vector<T>()) {
     // load content from file when the repository is created
     load();
 }
