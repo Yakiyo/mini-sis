@@ -32,3 +32,15 @@ class FileExcept: public exception {
         return ("Failed to open file: " + filename).c_str();
     }
 };
+
+class transactionExcept: public exception {
+    private:
+    string message;
+
+    public:
+    transactionExcept(const string& msg) : message(msg) {}
+
+    const char* what() const noexcept override {
+        return ("Transaction error: " + message).c_str();
+    }
+};

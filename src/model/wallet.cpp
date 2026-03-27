@@ -38,12 +38,18 @@ Wallet& Wallet::operator+(const int amount) {
 }
 
 Wallet& Wallet::operator-(const int amount) {
+    if(balance - amount < 0) {
+        throw transactionExcept("Insufficient balance");
+    }
     this->balance -= amount;
     return *this;
 }
 
 // friend function
 Wallet& operator-(const int amount,  Wallet& self) {
+    if(self.balance - amount < 0) {
+        throw transactionExcept("Insufficient balance");
+    }
     self.balance -= amount;
     return self;
 }
