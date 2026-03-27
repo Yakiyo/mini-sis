@@ -51,6 +51,10 @@ void adminMod(int adminId, RepoGroup& rg) {
                 employees.push_back(emp);
             }
 
+            cout << "List of all employees:" << endl;
+            for (const Employee* emp : employees) {
+                cout << "ID: " << emp->getId() << ", Name: " << emp->getName() << ", Type: " << emp->type() << endl;
+            }
             break;
         }
         case 3: {
