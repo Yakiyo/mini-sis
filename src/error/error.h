@@ -33,12 +33,12 @@ class FileExcept: public exception {
     }
 };
 
-class transactionExcept: public exception {
+class TransactionExcept: public exception {
     private:
     string message;
 
     public:
-    transactionExcept(const string& msg) : message(msg) {}
+    TransactionExcept(const string& msg) : message(msg) {}
 
     const char* what() const noexcept override {
         return ("Transaction error: " + message).c_str();
