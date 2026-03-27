@@ -42,12 +42,12 @@ void adminMod(int adminId, RepoGroup& rg) {
             vector<Employee*> employees;
 
             for (Faculty& faculty : rg.facultyRepo.getData()) {
-                Employee* emp = &faculty;
+                Employee* emp = new Faculty(faculty);
                 employees.push_back(emp);
             }
 
             for (Admin& admin : rg.adminRepo.getData()) {
-                Employee* emp = &admin;
+                Employee* emp = new Admin(admin);
                 employees.push_back(emp);
             }
 
