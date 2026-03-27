@@ -44,6 +44,9 @@ Wallet& Wallet::operator-(const int amount) {
     if(balance - amount < 0) {
         throw TransactionExcept("Insufficient balance");
     }
+    if(amount < 0) {
+        throw TransactionExcept("Amount must be positive");
+    }
     this->balance -= amount;
     return *this;
 }
@@ -52,6 +55,9 @@ Wallet& Wallet::operator-(const int amount) {
 Wallet& operator-(const int amount,  Wallet& self) {
     if(self.balance - amount < 0) {
         throw TransactionExcept("Insufficient balance");
+    }
+    if(amount < 0) {
+        throw TransactionExcept("Amount must be positive");
     }
     self.balance -= amount;
     return self;
