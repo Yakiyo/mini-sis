@@ -1,7 +1,12 @@
+#pragma once
+
+#include <fstream>
 #include <string>
 #include <vector>
-#include <fstream>
+
 #include "../error/error.h"
+#include "../model/employee.h"
+#include "../model/student.h"
 
 using namespace std;
 
@@ -9,11 +14,11 @@ using namespace std;
 // Any class T must implement the Serde interface
 template <typename T>
 class Repo {
-    private:
+   private:
     string filename;
     vector<T> data;
 
-    public:
+   public:
     Repo(const string& filename) : filename(filename), data(vector<T>()) {
         // load content from file when the repository is created
         load();
@@ -56,8 +61,22 @@ class Repo {
         this->data.push_back(item);
     }
 
+    vector<T> getData() const {
+        return this->data;
+    }
+
     ~Repo() {
         // save the current data to file when the repository is destroyed
         save();
     }
+};
+
+class RepoGroup {
+   public:
+    const Repo<Admin> adminRepo;
+    const Repo<Faculty> facultyRepo;
+    const Repo<Student> studentRepo;
+
+    RepoGroup(const Repo<Admin>& adminRepo, const Repo<Faculty>& facultyRepo, const Repo<Student>& studentRepo)
+        : adminRepo(adminRepo), facultyRepo(facultyRepo), studentRepo(studentRepo) {}
 };
