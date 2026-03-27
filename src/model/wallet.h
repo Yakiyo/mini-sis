@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <vector>
 
@@ -25,4 +27,7 @@ class Wallet : public Serde<Wallet> {
     Wallet& operator-(const int amount);
 
     operator int() const;
+
+    void addMoney(int amount);
+    void withdrawMoney(int amount);
 };

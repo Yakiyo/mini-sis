@@ -33,6 +33,9 @@ double Wallet::getBalance() const {
 }
 
 Wallet& Wallet::operator+(const int amount) {
+    if (amount < 0) {
+        throw TransactionExcept("Amount must be positive");
+    }
     this->balance += amount;
     return *this;
 }
@@ -56,4 +59,12 @@ Wallet& operator-(const int amount,  Wallet& self) {
 
 Wallet::operator int() const {
     return studentId;
+}
+
+void Wallet::addMoney(int amount) {
+    *this + amount;
+}
+
+void Wallet::withdrawMoney(int amount) {
+    *this - amount;
 }

@@ -2,6 +2,8 @@
 
 #include "admin.h"
 #include "faculty.h"
+#include "student.h"
+#include "faculty.h"
 #include "db/repo.h"
 #include "error/error.h"
 #include "model/employee.h"
@@ -44,6 +46,10 @@ int main() {
             case 3: {
                 cout << "Student login selected." << endl;
                 // Implement student login and functionalities here
+                cout << "Provide ID: " << endl;
+                int id;
+                cin >> id;
+                studentMod(id, rg);
                 break;
             }
             default:
@@ -54,6 +60,8 @@ int main() {
         cerr << "File error: " << e.what() << endl;
     } catch (const DsrlzExcept& e) {
         cerr << "Error deserializing data: " << e.what() << endl;
+    } catch (const TransactionExcept& e) {
+        cerr << "Transaction error: " << e.what() << endl;
     } catch (const exception& e) {
         cerr << "An unexpected error occurred: " << e.what() << endl;
     }

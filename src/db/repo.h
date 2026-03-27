@@ -23,7 +23,7 @@ class Repo {
 
    public:
     Repo(const string& filename) : filename(filename), data(vector<T>()) {
-        cout << "Creating repository for file: " << filename << endl;
+        // cout << "Creating repository for file: " << filename << endl;
         // load content from file when the repository is created
         load();
     }
@@ -70,7 +70,7 @@ class Repo {
     }
 
     ~Repo() {
-        cout << "Saving data to file: " << filename << endl;
+        // cout << "Saving data to file: " << filename << endl;
         // save the current data to file when the repository is destroyed
         save();
     }
