@@ -7,7 +7,9 @@
 
 #include "../error/error.h"
 #include "../model/employee.h"
+#include "../model/grade.h"
 #include "../model/student.h"
+#include "../model/wallet.h"
 
 using namespace std;
 
@@ -79,10 +81,9 @@ class RepoGroup {
     Repo<Admin> adminRepo;
     Repo<Faculty> facultyRepo;
     Repo<Student> studentRepo;
+    Repo<Grade> gradeRepo;
+    Repo<Wallet> walletRepo;
 
-    RepoGroup(Repo<Admin>& adminRepo, Repo<Faculty>& facultyRepo, Repo<Student>& studentRepo)
-        : adminRepo(adminRepo), facultyRepo(facultyRepo), studentRepo(studentRepo) {}
-
-    RepoGroup(string adminFile, string facultyFile, string studentFile)
-        : adminRepo(Repo<Admin>(adminFile)), facultyRepo(Repo<Faculty>(facultyFile)), studentRepo(Repo<Student>(studentFile)) {}
+    RepoGroup(string adminFile, string facultyFile, string studentFile, string gradeFile, string walletFile)
+        : adminRepo(Repo<Admin>(adminFile)), facultyRepo(Repo<Faculty>(facultyFile)), studentRepo(Repo<Student>(studentFile)), gradeRepo(Repo<Grade>(gradeFile)), walletRepo(Repo<Wallet>(walletFile)) {}
 };

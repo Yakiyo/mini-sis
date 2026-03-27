@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "admin.h"
+#include "faculty.h"
 #include "db/repo.h"
 #include "error/error.h"
 #include "model/employee.h"
@@ -13,8 +14,8 @@ int main() {
 
     try {
         cout << "Loading data..." << endl;
-        
-        RepoGroup rg("admin.txt", "faculty.txt", "student.txt");
+
+        RepoGroup rg("admin.txt", "faculty.txt", "student.txt", "grade.txt", "wallet.txt");
 
         cout << "Data loaded successfully!" << endl;
         cout << "Login to system: " << endl;
@@ -24,20 +25,27 @@ int main() {
         int choice;
         cin >> choice;
         switch (choice) {
-            case 1:
+            case 1: {
                 cout << "Provide ID: " << endl;
                 int id;
                 cin >> id;
                 adminMod(id, rg);
                 break;
-            case 2:
+            }
+            case 2: {
                 cout << "Faculty login selected." << endl;
                 // Implement faculty login and functionalities here
+                cout << "Provide ID: " << endl;
+                int id;
+                cin >> id;
+                facultyMod(id, rg);
                 break;
-            case 3:
+            }
+            case 3: {
                 cout << "Student login selected." << endl;
                 // Implement student login and functionalities here
                 break;
+            }
             default:
                 cout << "Invalid choice. Exiting..." << endl;
                 return 0;
