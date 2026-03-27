@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
-#include "error/error.h"
+#include <fstream>
+#include "../error/error.h"
 
 using namespace std;
 
@@ -13,11 +14,50 @@ class Repo {
     vector<T> data;
 
     public:
-    Repo(const string& filename);
+    Repo(const string& filename) : filename(filename), data(vector<T>()) {
+        // load content from file when the repository is created
+        load();
+    }
 
-    void save();
-    vector<T> load();
-    void add(const T& item);
+    void save() {
+        ofstream file(filename);
 
-    ~Repo();
+        if (!file.is_open()) {
+            throw FileExcept(filename);
+        }
+
+        for (const T& item : data) {
+            file << item.serialize() << endl;
+        }
+    }
+
+    vector<T> load() {
+        // clear the current data before loading new data
+        this->data.clear();
+
+        ifstream file(filename);
+        if (!file.is_open()) {
+            cout << "Failed to open file: " << filename << endl;
+            throw FileExcept(filename);
+        }
+
+        string line;
+        while (getline(file, line)) {
+            if (!line.empty()) {
+                T item = T::deserialize(line);
+                this->data.push_back(item);
+            }
+        }
+
+        return this->data;
+    }
+
+    void add(const T& item) {
+        this->data.push_back(item);
+    }
+
+    ~Repo() {
+        // save the current data to file when the repository is destroyed
+        save();
+    }
 };
