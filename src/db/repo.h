@@ -73,10 +73,10 @@ class Repo {
 
 class RepoGroup {
    public:
-    const Repo<Admin> adminRepo;
-    const Repo<Faculty> facultyRepo;
-    const Repo<Student> studentRepo;
+    Repo<Admin> adminRepo;
+    Repo<Faculty> facultyRepo;
+    Repo<Student> studentRepo;
 
-    RepoGroup(const Repo<Admin>& adminRepo, const Repo<Faculty>& facultyRepo, const Repo<Student>& studentRepo)
+    RepoGroup(Repo<Admin>& adminRepo, Repo<Faculty>& facultyRepo, Repo<Student>& studentRepo)
         : adminRepo(adminRepo), facultyRepo(facultyRepo), studentRepo(studentRepo) {}
 };
