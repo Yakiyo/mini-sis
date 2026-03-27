@@ -48,4 +48,6 @@ Wallet& operator-(const int amount,  Wallet& self) {
     return self;
 }
 
-
+Wallet::operator int() const {
+    return studentId;
+}

@@ -35,6 +35,10 @@ Admin Admin::deserialize(const string& data) {
     return Admin(parts[1], stoi(parts[2]), parts[3]);
 }
 
+string Admin::getName() const {
+    return name + " (" + post + ")";
+}
+
 
 
 // Faculty class implementation
@@ -57,4 +61,8 @@ Faculty Faculty::deserialize(const string& data) {
         throw DsrlzExcept("Faculty", data);
     }
     return Faculty(parts[1], stoi(parts[2]), parts[3]);
+}
+
+string Faculty::getName() const {
+    return designation + " " + name;
 }

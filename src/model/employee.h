@@ -27,6 +27,8 @@ class Admin : public Employee, public Serde<Admin> {
     string serialize() const override;
 
     static Admin deserialize(const string& data);
+
+    string getName() const override;
 };
 
 class Faculty : public Employee, public Serde<Faculty> {
@@ -41,4 +43,6 @@ class Faculty : public Employee, public Serde<Faculty> {
     string serialize() const override;
 
     static Faculty deserialize(const string& data);
+
+    string getName() const override;
 };

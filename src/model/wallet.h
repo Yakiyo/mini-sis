@@ -23,4 +23,6 @@ class Wallet : public Serde<Wallet> {
 
     friend Wallet& operator-(const int amount, Wallet& self);
     Wallet& operator-(const int amount);
+
+    operator int() const;
 };

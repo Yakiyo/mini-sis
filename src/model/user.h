@@ -17,5 +17,5 @@ class User {
     virtual string type() const = 0;
 
     int getId() const;
-    string getName() const;
+    virtual string getName() const;
 };

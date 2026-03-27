@@ -8,3 +8,4 @@ Student,George Miller,107,EEE,23
 Student,Hannah Abbott,108,IPE,24
 Student,Ian Wright,109,CSE,21
 Student,Julia Roberts,110,ME,22
+Student,Nafi Abrar,103,IPE,24

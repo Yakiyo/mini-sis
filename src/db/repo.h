@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -20,6 +21,7 @@ class Repo {
 
    public:
     Repo(const string& filename) : filename(filename), data(vector<T>()) {
+        cout << "Creating repository for file: " << filename << endl;
         // load content from file when the repository is created
         load();
     }
@@ -66,6 +68,7 @@ class Repo {
     }
 
     ~Repo() {
+        cout << "Saving data to file: " << filename << endl;
         // save the current data to file when the repository is destroyed
         save();
     }
@@ -79,4 +82,7 @@ class RepoGroup {
 
     RepoGroup(Repo<Admin>& adminRepo, Repo<Faculty>& facultyRepo, Repo<Student>& studentRepo)
         : adminRepo(adminRepo), facultyRepo(facultyRepo), studentRepo(studentRepo) {}
+
+    RepoGroup(string adminFile, string facultyFile, string studentFile)
+        : adminRepo(Repo<Admin>(adminFile)), facultyRepo(Repo<Faculty>(facultyFile)), studentRepo(Repo<Student>(studentFile)) {}
 };
